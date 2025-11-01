@@ -15,7 +15,7 @@
         <main>
             <section class="container">
                 <h3>Crochet and Knitting Selling Price Calculator</h3>
-                <form action="CalcServlet.java" method="post">
+                <form id="inputForm" action="CalcServlet.java" method="post">
                     <section class="textbox">
                         <label for="ycost">Yarn Cost: </label>
                         <span>$</span>
@@ -36,7 +36,36 @@
                         <input type="reset" value="Reset">
                     </section>
                 </form>
+                <section class="textbox" id="result"></section>
             </section>
         </main>
+        
+        <script>
+            document.getElementById("inputForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const yarnCost = parseFloat(document.getElementById("ycost").value) || 0;
+                const acostParam = document.getElementById("acost").value;
+                const additionalCost = acostParam === "" ? 0.0 : parseFloat(acostParam);
+                const hoursSpent = parseFloat(document.getElementById("hours").value) || 0;
+                const minWage = parseFloat(document.getElementById("mwage").value) || 0;
+                const markupPercentage = parseFloat(document.getElementById("profit").value) || 0;
+
+                const laborCost = hoursSpent * minWage;
+                const totalCost = yarnCost + additionalCost + laborCost;
+                const markupRate = markupPercentage / 100.0;
+                const markupPrice = totalCost * (1 + markupRate);
+
+                document.getElementById("result").innerHTML = `
+                    <h3>Price Breakdown</h3>
+                    <p>&#129526; Yarn Cost: $${yarnCost.toFixed(2)}</p>
+                    <p>&#128230; Additional Cost: $${additionalCost.toFixed(2)}</p>
+                    <p>&#9202;&#65039; Labor Cost (${hoursSpent} hrs @ $${minWage.toFixed(2)}/hr): $${laborCost.toFixed(2)}</p>
+                    <p>&#128176; Total Cost: $${totalCost.toFixed(2)}</p>
+                    <p>&#128184; Suggested Selling Price (${markupPercentage} %markup): $${markupPrice.toFixed(2)}</p>
+                    <br><a href="#inputForm">&#128281; Back to Calculator</a>
+                `;
+            });
+        </script>
     </body>
 </html>
