@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
+<html lang="en">
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Price Breakdown</title>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <main class="container">
+            <section class="textbox" id="result"></section>
+            <br><a href="index.html">&#128281; Back to Calculator</a>
+        </main>
+
+        <script>
+        const params = new URLSearchParams(window.location.search);
+        const yarnCost = parseFloat(params.get("ycost")) || 0;
+        const additionalCost = parseFloat(params.get("acost")) || 0;
+        const hoursSpent = parseFloat(params.get("hours")) || 0;
+        const minWage = parseFloat(params.get("mwage")) || 0;
+        const markupPercentage = parseFloat(params.get("profit")) || 0;
+
+        const laborCost = hoursSpent * minWage;
+        const totalCost = yarnCost + additionalCost + laborCost;
+        const markupRate = markupPercentage / 100.0;
+        const markupPrice = totalCost * (1 + markupRate);
+
+        document.getElementById("result").innerHTML = `
+            <h3>Price Breakdown</h3>
+            <p>&#129526; Yarn Cost: $${yarnCost.toFixed(2)}</p>
+            <p>&#128230; Additional Cost: $${additionalCost.toFixed(2)}</p>
+            <p>&#9202;&#65039; Labor Cost (${hoursSpent} hrs @ $${minWage.toFixed(2)}/hr): $${laborCost.toFixed(2)}</p>
+            <p>&#128176; Total Cost: $${totalCost.toFixed(2)}</p>
+            <p>&#128184; Suggested Selling Price (${markupPercentage}% markup): $${markupPrice.toFixed(2)}</p>
+        `;
+        </script>
     </body>
 </html>
