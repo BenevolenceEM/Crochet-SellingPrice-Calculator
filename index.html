@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>My Crochet Price Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/jpeg" sizes="32x32" href="images/logo.jpg">
+    </head>
+    <body>
+        <header>
+            <h2>Have you ever wondered how much you should charge for your crochet and knit items?<br>
+            Here's a suggested price calculator</h2>
+            <h2>Just input some small details below and it gives you a suggested selling price</h2>
+        </header>
+        <main>
+            <section class="container">
+                <h3>Crochet and Knitting Selling Price Calculator</h3>
+                <form action="CalcServlet" method="post">
+                    <section class="textbox">
+                        <label for="ycost">Yarn Cost: </label>
+                        <span>$</span>
+                        <input type="number" id="ycost" name="ycost" step="0.01" min="0" required placeholder="Enter cost of yarn">
+                        <br><br><label for="acost">Additional Cost: </label>
+                        <span>$</span>
+                        <input type="number" id="acost" name="acost" step="0.01" min="0" placeholder="Enter cost of any other materials">
+                        <br><br><label for="hours">Hours Spent: </label>
+                        <input type="number" id="hours" name="hours" required placeholder="Enter estimated time spent">
+                        <br><br><label for="mwage">Minimum Wage: </label>
+                        <span>$</span>
+                        <input type="number" id="mwage" name="mwage" step="0.01" min="0" required placeholder="Enter your state's minimum wage rate">
+                        <span>/hr</span>
+                        <br><br><label for="profit">Profit Margin: </label>
+                        <input type="number" id="profit" name="profit" step="1" min="0" max="100" placeholder="Example: 20">
+                        <span>%</span><br><br>
+                        <input type="submit" value="Calculate">
+                        <input type="reset" value="Reset">
+                    </section>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

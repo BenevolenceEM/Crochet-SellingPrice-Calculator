@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+body {
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.container h3 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.textbox {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.container input[type="number"] {
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    resize: none;
+}
+
+.container input[type="submit"] {
+    margin-right: 15px;
+}
+
+.container input[type="submit"], .container input[type="reset"] {
+    width: 100px;
+    height: 40px;
+    border: 1px solid gray;
+}
+
+@media(max-width: 768px) {
+    h2 {
+        font-size: 18px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+    
+    .container h3 {
+        padding-top: 5px;
+    }
+    
+    .textbox {
+        padding-top: 5px;
+    }
+}
+
+@media(max-width: 480px) {
+    h2, h3 {
+        font-size: 14px;
+    }
+    
+    .container input[type="number"] {
+        width: 90%;
+    }
+    
+    .container input[type="submit"], .container input[type="reset"] {
+        width: 45%;
+        margin: 5px;
+    }
+}
